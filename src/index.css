@@ -38,10 +38,20 @@ body {
   border: none;
   cursor: pointer;
 }
+
+.btnSubmit:focus {
+  box-shadow: 3px 3px 0 0 black;
+}
+
 .login-form-1 .btnSubmit{
   color: #fff;
   background-color: #0062cc;
 }
+.login-form-1 .btnSubmit:hover{
+  color: #fff;
+  background-color: #007bff;
+}
+
 .login-form-2 .btnSubmit{
   background-color: #fff;
   color: #0062cc;
