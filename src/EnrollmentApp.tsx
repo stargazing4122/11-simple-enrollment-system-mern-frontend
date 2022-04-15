@@ -1,7 +1,9 @@
-import React from 'react'
+import { AppRouter } from './routers';
 
 export const EnrollmentApp = () => {
   return (
-    <div>EnrollmentApp</div>
+    <>
+      <AppRouter />
+    </>
   )
 }
