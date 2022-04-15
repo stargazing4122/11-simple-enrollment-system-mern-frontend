@@ -78,3 +78,10 @@ export const startCheckAuth = () => {
     }
   }
 }
+
+export const startLogout = () => {
+  return ( dispatch: Dispatch ) => {
+    localStorage.removeItem('token-enrollment-mern');
+    dispatch( doSignout() );
+  }
+}

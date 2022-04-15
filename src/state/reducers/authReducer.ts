@@ -23,6 +23,12 @@ export const authReducer = ( state: AuthState = initialState, action: AuthAction
         user: { ...action.payload },
       }
     
+    case '[Auth] - sign out':
+      return {
+        ...state,
+        user: null,
+      }
+    
     case '[Auth] - set checkAuth':
       return {
         ...state,

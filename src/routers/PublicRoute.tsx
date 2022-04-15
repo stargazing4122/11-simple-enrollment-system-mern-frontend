@@ -12,7 +12,7 @@ export const PublicRoute: FC<Props> = ({ component: Component, isAuth, ...rest }
   return (
     <Route 
       { ...rest }
-      component={ (props: any) => (
+      render={ (props: any) => (
         !isAuth
           ? <Component { ...props } />
           : <Redirect to="/"/>
