@@ -1,5 +1,7 @@
 import { FormEvent } from "react";
+import { useDispatch } from "react-redux";
 import { useForm } from "../hooks";
+import { startLogin } from '../state/actions/authActions';
 
 
 interface FormData {
@@ -7,7 +9,7 @@ interface FormData {
   password: string;
 }
 const initialForm: FormData = {
-  email: 'user@test.com',
+  email: 'admin@email.com',
   password: '123456',
 }
 
@@ -16,10 +18,12 @@ export const LoginScreen = () => {
   const { formValues, handleInputChange } = useForm<FormData>( initialForm );
   const { email, password } = formValues;
 
+  const dispatch = useDispatch();
+
   // functions
   const handleLoginSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert('login')
+    dispatch( startLogin( email, password ) );
   }
 
   return (

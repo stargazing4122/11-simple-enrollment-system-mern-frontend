@@ -5,7 +5,7 @@ type ReqMethod =
   | 'DELETE'
 
 
-export const fetchWithoutToken = (endPoint: string, data: any, method: ReqMethod = 'GET') => {
+export const fetchWithoutToken = (endPoint: string, data?: any, method: ReqMethod = 'GET') => {
 
   const url: string = `${ process.env.REACT_APP_API}${endPoint}`;
 
@@ -24,7 +24,7 @@ export const fetchWithoutToken = (endPoint: string, data: any, method: ReqMethod
 }
 
 
-export const fetchWithToken = ( endPoint: string, data: any, method: ReqMethod = 'GET') => {
+export const fetchWithToken = ( endPoint: string, data?: any, method: ReqMethod = 'GET') => {
 
   const url: string = `${ process.env.REACT_APP_API}${endPoint}`;
   const token: string = localStorage.getItem('token-enrollment-mern') || '';
