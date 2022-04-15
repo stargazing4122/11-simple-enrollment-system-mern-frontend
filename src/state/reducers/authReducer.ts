@@ -22,6 +22,12 @@ export const authReducer = ( state: AuthState = initialState, action: AuthAction
         isAuthCheck: true,
         user: { ...action.payload },
       }
+    
+    case '[Auth] - set checkAuth':
+      return {
+        ...state,
+        isAuthCheck: true,
+      }
   
     default:
       return state;
