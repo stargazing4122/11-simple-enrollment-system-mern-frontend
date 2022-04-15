@@ -2,16 +2,17 @@
 import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
 
-import { HomeScreen, LoginScreen } from '../pages';
+import { HomeScreen, LoginScreen } from '../pages/';
 import { State } from '../state/reducers/rootReducer';
 import { startCheckAuth } from '../state/actions/authActions';
+import { PrivateRoute, PublicRoute } from '.';
 
 
 export const AppRouter = () => {
   // hooks
-  const { isAuthCheck } = useSelector( (state: State) => state.auth );
+  const { isAuthCheck, user } = useSelector( (state: State) => state.auth );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,8 +26,19 @@ export const AppRouter = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/signin" component={ LoginScreen } />
-        <Route path="/" component={ HomeScreen } />
+        <PublicRoute 
+          exact
+          path="/signin" 
+          component={ LoginScreen } 
+          isAuth={ !!user }
+        />
+        <PrivateRoute 
+          exact
+          path="/" 
+          component={ HomeScreen } 
+          isAuth={ !!user }
+        />
+        <Redirect to="/" />
       </Switch>
     </Router>
   )
