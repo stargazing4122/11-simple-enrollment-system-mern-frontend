@@ -22,7 +22,7 @@ const initialForm: FormData = {
 }
 export const RegisterUser = () => {
   // hooks 
-  const { formValues, handleInputChange } = useForm( initialForm);
+  const { formValues, handleInputChange, resetForm } = useForm( initialForm);
   const { name, email, role, password1, password2 } = formValues;
   const dispatch = useDispatch();
 
@@ -34,6 +34,7 @@ export const RegisterUser = () => {
       return;
     }
     dispatch( startRegisterUser( name, email, password1, role) );
+    resetForm();
   }
   return (
     <div className="container login-container">
