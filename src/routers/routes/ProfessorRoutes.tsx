@@ -1,9 +1,17 @@
-import React from 'react'
-import { Redirect, Route, Switch } from 'react-router-dom'
-import { ProfessorCourses, ProfessorCourse } from '../../components/professor/'
+import { useEffect } from 'react';
+
+import { useDispatch } from 'react-redux';
+import { Redirect, Route, Switch } from 'react-router-dom';
+
+import { ProfessorCourses, ProfessorCourse } from '../../components/professor/';
+import { startLoadProfessorCourses } from '../../state/actions/';
 
 
 export const ProfessorRoutes = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch( startLoadProfessorCourses() );
+  }, [ dispatch ])
   return (
     <>
       <Switch>
