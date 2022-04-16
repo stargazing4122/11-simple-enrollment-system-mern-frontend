@@ -34,7 +34,6 @@ export const RegisterUser = () => {
       return;
     }
     dispatch( startRegisterUser( name, email, password1, role) );
-    resetForm();
   }
   return (
     <div className="container login-container">
@@ -132,7 +131,17 @@ export const RegisterUser = () => {
           </div>
 
           <div className="form-group">
-            <input type="submit" className="btnSubmit" value="Crear cuenta" />
+            <input 
+              type="submit" 
+              className="btnSubmit" 
+              value="Crear cuenta" 
+            />
+            <input 
+              type="button" 
+              className="btn2" 
+              value="Reset Form"
+              onClick={ resetForm } 
+            />
           </div>
         </form>
       </div>
