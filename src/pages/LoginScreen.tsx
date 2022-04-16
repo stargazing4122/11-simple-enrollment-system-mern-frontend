@@ -10,7 +10,7 @@ interface FormData {
   password: string;
 }
 const initialForm: FormData = {
-  email: 'admin@email.com',
+  email: '@user.com',
   password: '123456',
 }
 

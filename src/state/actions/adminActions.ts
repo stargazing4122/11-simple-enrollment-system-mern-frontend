@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 import Swal from 'sweetalert2';
 
-import { AdminCoursesRes, AdminEnrollmentsRes, AdminUsersRes, FullAdminState } from '../../interfaces';
+import { AdminCoursesRes, AdminEnrollmentsRes, AdminRegisterUserRes, AdminUsersRes, FullAdminState,  } from '../../interfaces';
 import { fetchWithToken } from '../../utils/';
 
 
@@ -58,6 +58,28 @@ export const startLoadEnrollmentsCoursesUsers = () => {
     } catch (err) {
       Swal.fire('Error', 'An error ocurred while loading the data for admin', 'error');
       console.log(err)
+    }
+  }
+}
+
+export const startRegisterUser = ( name: string, email: string, password: string, role: string ) => {
+  return async() => {
+    try {
+      const resp = await fetchWithToken( 
+        '/persons',
+        { name, email, password, role },
+        'POST'
+      );
+      const body = await resp.json() as AdminRegisterUserRes;
+
+      if( body.ok ) {
+        Swal.fire('Success', body.msg, 'success');
+      } else {
+        Swal.fire('Error', body.msg, 'error');
+      }
+    } catch (err) {
+      Swal.fire('Error', 'An error ocurred while loading the data for admin', 'error');
+      console.log(err);
     }
   }
 }
