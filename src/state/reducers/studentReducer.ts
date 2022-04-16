@@ -19,8 +19,7 @@ export const studentReducer = ( state: StudentState = initialState, action: Stud
     case '[Student] - load enrollments & not enrollments':
       return {
         ...state,
-        enrollments: [ ...action.payload.enrollments ],
-        noEnrollments: [ ...action.payload.noEnrollments ],
+        ...action.payload,
       }
 
     case '[Student] - enroll':
