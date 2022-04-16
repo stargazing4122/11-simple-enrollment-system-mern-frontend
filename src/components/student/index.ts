@@ -1,3 +1,4 @@
 export * from './EnrollmentCourses';
 export * from './NoEnrollmentCourses';
-export * from './CourseRow';
+export * from './CourseEnrollmentRow';
+export * from './CourseNoEnrollmentRow';

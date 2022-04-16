@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { State } from '../../state/reducers/rootReducer';
-import { CourseRow } from './';
+import { CourseNoEnrollmentRow } from './';
 
 export const NoEnrollmentCourses = () => {
   const { noEnrollments } = useSelector( (state: State) => state.student );
@@ -19,7 +19,7 @@ export const NoEnrollmentCourses = () => {
         <tbody>
           {
             noEnrollments?.map( course => (
-              <CourseRow
+              <CourseNoEnrollmentRow
                 key={ course.id }
                 course={ course }
               />

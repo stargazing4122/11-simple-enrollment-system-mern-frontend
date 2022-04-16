@@ -19,33 +19,31 @@ export const DashboardRoutes = () => {
   return (
     <div>
       <Navbar />
-      <Switch>
-
-        <Route 
-          exact 
-          path="/" 
-          component={ HomeScreen }
-        />
-
-        <AdminProtected 
-          path="/admin" 
-          component={ AdminRoutes } 
-          role={ role }
-        />
-
-        <StudentProtected 
-          path="/student" 
-          component={ StudentRoutes } 
-          role={ role }
-        />
-
-        <ProfessorProtected 
-          path="/professor"
-          component={ ProfessorRoutes }
-          role={ role }
-        />
-        <Redirect to="/" />
-      </Switch>
+      <div className="container">
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={ HomeScreen }
+          />
+          <AdminProtected
+            path="/admin"
+            component={ AdminRoutes }
+            role={ role }
+          />
+          <StudentProtected
+            path="/student"
+            component={ StudentRoutes }
+            role={ role }
+          />
+          <ProfessorProtected
+            path="/professor"
+            component={ ProfessorRoutes }
+            role={ role }
+          />
+          <Redirect to="/" />
+        </Switch>
+      </div>
     </div>
   )
 }

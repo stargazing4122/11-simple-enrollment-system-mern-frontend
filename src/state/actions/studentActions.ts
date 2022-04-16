@@ -1,8 +1,10 @@
 import { Dispatch } from 'redux';
 import Swal from 'sweetalert2';
-import { EnrollmentCourse, NotEnrollmentCourse, StudentEnrollmentRes, StudentNoEnrollmentRes } from '../../interfaces/';
+
+import { EnrollmentCourse, NotEnrollmentCourse, StudentEnrollmentRes, StudentNoEnrollmentRes, StudentEnrollRes } from '../../interfaces/';
 import { fetchWithToken } from '../../utils/';
 import { State } from '../reducers/rootReducer';
+
 
 // types
 export type StudentActionType =
@@ -12,7 +14,8 @@ export type StudentActionType =
         enrollments: EnrollmentCourse[];
         noEnrollments: NotEnrollmentCourse[];
       } 
-    };
+    }
+  |{ type: '[Student] - enroll';  payload: NotEnrollmentCourse }
 
 
 // synchronous actions
@@ -22,6 +25,11 @@ const doLoadNotAndEnrollments = ( enrollments: EnrollmentCourse[], noEnrollments
     enrollments,
     noEnrollments,
   }
+});
+
+const doEnrollOnCourse = ( course: NotEnrollmentCourse): StudentActionType => ({
+  type: '[Student] - enroll',
+  payload: course,
 })
 
 // asynchronous actions
@@ -54,6 +62,26 @@ export const startLoadNotAndEnrollments = () => {
     } catch (err) {
       Swal.fire('Error', 'An error ocurred while loading the enrollments', 'error');
       console.log(err)
+    }
+  }
+}
+
+export const startEnrollOnCourse = ( course: NotEnrollmentCourse ) => {
+  return async( dispatch: Dispatch ) => {
+    try {
+      const resp = await fetchWithToken('/enrollment', {course: course.id}, 'POST');
+      const body = await resp.json() as StudentEnrollRes;
+      if( body.ok ) {
+        dispatch( doEnrollOnCourse( course ));
+        Swal.fire('Success', body.msg, 'success');
+      } else {
+        Swal.fire('Error', body.msg, 'error');
+
+      }
+    } catch (err) {
+      console.log(err)
+      Swal.fire('Error', 'An error ocurred', 'error');
+
     }
   }
 }

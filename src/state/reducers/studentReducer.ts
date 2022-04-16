@@ -22,6 +22,18 @@ export const studentReducer = ( state: StudentState = initialState, action: Stud
         enrollments: [ ...action.payload.enrollments ],
         noEnrollments: [ ...action.payload.noEnrollments ],
       }
+
+    case '[Student] - enroll':
+      return {
+        ...state,
+        enrollments: [ 
+          ...(state.enrollments) as EnrollmentCourse[], 
+          {...action.payload}
+        ],
+        noEnrollments: (state.noEnrollments?.filter( 
+          course => course.id !== action.payload.id 
+        )) as NotEnrollmentCourse[]
+      }
   
     default:
       return state;
