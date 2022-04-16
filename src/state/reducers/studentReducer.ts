@@ -33,6 +33,11 @@ export const studentReducer = ( state: StudentState = initialState, action: Stud
           course => course.id !== action.payload.id 
         )) as NotEnrollmentCourse[]
       }
+
+    case '[Student] - clean state':
+      return {
+        ...initialState
+      }
   
     default:
       return state;

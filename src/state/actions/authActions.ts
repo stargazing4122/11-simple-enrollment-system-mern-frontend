@@ -3,6 +3,9 @@ import Swal from 'sweetalert2';
 
 import { fetchWithoutToken, fetchWithToken } from '../../utils/';
 import { LoginResponse, UserAuth, ValidateAuth } from '../../interfaces/';
+import { doCleanStudentState } from './studentActions';
+import { doCleanAdminState } from './adminActions';
+import { doCleanProfessorState } from './professorActions';
 
 
 //? TYPES
@@ -83,5 +86,8 @@ export const startLogout = () => {
   return ( dispatch: Dispatch ) => {
     localStorage.removeItem('token-enrollment-mern');
     dispatch( doSignout() );
+    dispatch( doCleanStudentState());
+    dispatch( doCleanAdminState() );
+    dispatch( doCleanProfessorState() );
   }
 }

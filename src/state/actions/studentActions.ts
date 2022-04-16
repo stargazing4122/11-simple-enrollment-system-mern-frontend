@@ -16,6 +16,7 @@ export type StudentActionType =
       } 
     }
   |{ type: '[Student] - enroll';  payload: NotEnrollmentCourse }
+  |{ type: '[Student] - clean state'; }
 
 
 // synchronous actions
@@ -27,11 +28,15 @@ const doLoadNotAndEnrollments = ( enrollments: EnrollmentCourse[], noEnrollments
   }
 });
 
+
 const doEnrollOnCourse = ( course: NotEnrollmentCourse): StudentActionType => ({
   type: '[Student] - enroll',
   payload: course,
-})
+});
 
+export const doCleanStudentState = ():StudentActionType => ({
+  type: '[Student] - clean state',
+});
 // asynchronous actions
 type Res = [StudentEnrollmentRes, StudentNoEnrollmentRes]
 export const startLoadNotAndEnrollments = () => {

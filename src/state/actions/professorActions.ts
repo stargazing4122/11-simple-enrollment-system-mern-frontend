@@ -12,12 +12,17 @@ export type ProfessorActionType =
       type: '[Professor] - Load all courses of professor';
       payload: ProfessorCourse[]; 
     }
+  |{ type: '[Professor] - Clean Professor State'; }
 
 
 // SYNCHRONOUS ACTIONS
 const doLoadProfessorCourses = ( courses: ProfessorCourse[] ): ProfessorActionType=> ({
   type: '[Professor] - Load all courses of professor',
   payload: courses,
+});
+
+export const doCleanProfessorState = (): ProfessorActionType => ({
+  type: '[Professor] - Clean Professor State',
 })
 
 

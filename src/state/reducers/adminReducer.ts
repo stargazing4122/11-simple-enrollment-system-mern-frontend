@@ -22,6 +22,11 @@ export const adminReducer = ( state: AdminState = initialState, action: AdminAct
         ...state,
         ...action.payload
       }
+
+    case '[Admin] - Clean admin state':
+      return {
+        ...initialState,
+      }
   
     default:
       return state;

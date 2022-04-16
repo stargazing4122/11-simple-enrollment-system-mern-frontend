@@ -11,11 +11,16 @@ export type AdminActionType =
       type: '[Admin] - Load enrollments, courses, users'; 
       payload: FullAdminState
     }
+  |{ type: '[Admin] - Clean admin state'; }
 
 // synchronous actions
 const doLoadEnrollmentsCoursesUsers = ( enrollmentUsersCourses: FullAdminState ): AdminActionType => ({
   type: '[Admin] - Load enrollments, courses, users',
   payload: enrollmentUsersCourses,
+});
+
+export const doCleanAdminState = (): AdminActionType => ({
+  type: '[Admin] - Clean admin state',
 })
 
 

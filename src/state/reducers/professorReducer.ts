@@ -19,6 +19,11 @@ export const professorReducer = ( state: ProfessorState = initialState, action: 
         ...state,
         courses: [ ...action.payload ],
       }
+    
+    case '[Professor] - Clean Professor State':
+      return {
+        ...initialState,
+      }
   
     default:
       return state;
