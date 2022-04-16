@@ -4,10 +4,11 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Redirect, Switch } from 'react-router-dom';
 
-import { HomeScreen, LoginScreen } from '../pages/';
+import { LoginScreen } from '../pages/';
 import { State } from '../state/reducers/rootReducer';
 import { startCheckAuth } from '../state/actions/authActions';
-import { PrivateRoute, PublicRoute } from '.';
+import { DashboardRoutes } from './';
+import { PublicRoute , PrivateRoute} from './protected/';
 
 
 export const AppRouter = () => {
@@ -32,10 +33,9 @@ export const AppRouter = () => {
           component={ LoginScreen } 
           isAuth={ !!user }
         />
-        <PrivateRoute 
-          exact
+        <PrivateRoute
           path="/" 
-          component={ HomeScreen } 
+          component={ DashboardRoutes } 
           isAuth={ !!user }
         />
         <Redirect to="/" />
