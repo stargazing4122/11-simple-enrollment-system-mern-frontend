@@ -22,7 +22,7 @@ export const ProfessorRoutes = () => {
         />
         <Route 
           exact
-          path="/professor/courses/:courseid"
+          path="/professor/courses/:courseId"
           component={ ProfessorCourse }
         />
         <Redirect to="/professor/courses"/>

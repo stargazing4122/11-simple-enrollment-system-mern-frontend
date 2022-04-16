@@ -1,14 +1,20 @@
 import React from 'react';
 
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { State } from '../../state/reducers/rootReducer';
 
 
 export const ProfessorCourses = () => {
 
+  // hooks
   const { courses } = useSelector( (state: State) => state.professor );
-
+  const history = useHistory()
+  // functions
+  const handleEnrolledButtonClick = ( courseId: string ) => {
+    history.push(`/professor/courses/${ courseId }`)
+  }
   return (
     <>
       <h2> Courses you teach</h2>
@@ -28,6 +34,7 @@ export const ProfessorCourses = () => {
                 <td>{ course.courseName }</td>
                 <td>
                   <button 
+                    onClick={ () => handleEnrolledButtonClick( course.id) }
                     type="button"
                     className="btn btn-outline-success"
                   >
