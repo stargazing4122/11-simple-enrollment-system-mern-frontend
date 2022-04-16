@@ -7,7 +7,7 @@ export const NoEnrollmentCourses = () => {
   const { noEnrollments } = useSelector( (state: State) => state.student );
   return (
     <>
-      <h2>Enrollment Courses</h2>
+      <h2>No Enrollment Courses</h2>
       <table className="table table-dark">
         <thead>
           <tr>
