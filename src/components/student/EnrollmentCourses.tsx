@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import { State } from "../../state/reducers/rootReducer";
-import { CourseRow } from "./CourseRow";
+import { CourseRow } from "./";
 
 
 export const EnrollmentCourses = () => {
